@@ -1,18 +1,18 @@
 ## CRAZY DRIVER ##
-#Modules
-import pygame
+
+# Modules
 import random
-from math import sqrt
+import pygame
 pygame.init()
 
-#Variables
+# Variables
 score = 0
 level = 0
 
 road_speed = 12
 speed = 10
 
-#Display
+# Display
 infoObject = pygame.display.Info()
 correction = 90
 screen_height = infoObject.current_h-correction
@@ -38,12 +38,12 @@ level_font = pygame.font.Font("texture/font.ttf",t5)
 
 level_up_texts = ["FASTER !", "DRIFT !", "FULL SPEED !", "LET'S GOOOOOO !", "SPEED DOESN'T KILL !", "HELL YEAH !", "SPEED OF LIGHT !", "EASY !", "EASY PEASY LEMON SQUEEZY !", "TOO EASY !", "LEVEL UP !", "...", "CRAZY DRIVER !", "SPEED OF LIGHT !", "184 KM/H !", "OH !", "HEY !", "WELL DONE !", "YOU ARE THE BEST !", "SEBASTIEN LOEB ?", "KING OF THE ROAD!", "SUZUKI or CITROEN ?", "HELLO !", "NEXT LEVEL !", "!!!", "WHAT'S UP GUYS ?!", "ROCK'N'ROLL !", "TO THE SKYYYYYY !","3...2...1...GO !", "WELL PLAYED !", "YOU'RE SO SLOW !", "YEAH !", "ALL RIGHT !", "200 DEGREES", "DON'T STOP !", "OUT OF CONTROL !!", "VROUM !", "WTF ?!", "I <3 U !", "CHRICHRIIII !", "YANKEEEE !", "<3 CHRISTOPHE <3", "STAYING ALIVE !", "F*CK YOU !", "631 152 000"]
 
-#Music
+# Music
 musics = ["music/3nuits.mp3","music/aventurier.mp3","music/banlieue.mp3","music/beegees.mp3","music/fcd.mp3","music/gimme.mp3","music/harley.mp3","music/hero.mp3","music/hurricane.mp3","music/idiot.mp3","music/kiss.mp3","music/lossofcontrol.mp3","music/popcorn.mp3","music/queen.mp3","music/renaud.mp3","music/sabotage.mp3","music/show.mp3","music/stop.mp3","music/survive.mp3","music/tiger.mp3"]
 
 menu_musics = ["music/m_hurricane.mp3","music/m_idiot.mp3","music/m_kiss.mp3","music/m_sabotage.mp3"]
 
-#Textures
+# Textures
 bg = pygame.image.load("bg/bg.png").convert()
 bg = pygame.transform.scale(bg, (screen_width, screen_height))
 
@@ -202,7 +202,7 @@ obs_color=[green,blue,orange,yellow,grey,black,dblue]
 
 # list_bg_bonus=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,q,r,s,t,u,v,w,x,y,z,aa,bb,cc,dd,ee,ff,gg,hh,ii,jj]
 
-#Class
+# Classes
 class Car(object):
 
     def __init__(self, x, y, vel, color):
@@ -218,12 +218,12 @@ class Car(object):
     def draw_(self,win):
         if self.__class__.__name__ == "Player":
             win.blit(car,(self.x,self.y))
-            #self.hitbox=(self.x, self.y, self.width-1, self.height-1)
-            #pygame.draw.rect(win,(255,0,0),self.hitbox,2)
+            # self.hitbox=(self.x, self.y, self.width-1, self.height-1)
+            # pygame.draw.rect(win,(255,0,0),self.hitbox,2)
         elif self.__class__.__name__ == "Obstacle":
             win.blit(obs_color[self.color],(self.x,self.y))
-            #self.hitbox=(self.x, self.y, self.width-1, self.height-1)
-            #pygame.draw.rect(win,(255,0,0),self.hitbox,2)
+            # self.hitbox=(self.x, self.y, self.width-1, self.height-1)
+            # pygame.draw.rect(win,(255,0,0),self.hitbox,2)
 
     def set_y(self,y):
         self.y = y
@@ -370,7 +370,7 @@ def redrawGameWindow():
         text.draw_(win)
         text.timer-=1
     text_score=small_font.render("Score: "+str(score), 1, (255,0,0))
-    #pygame.draw.rect(win,(0,0,0),(0,0,text_score.get_width()+4,text_score.get_height()+2))
+    # pygame.draw.rect(win,(0,0,0),(0,0,text_score.get_width()+4,text_score.get_height()+2))
     win.blit(text_score,(screen_width/2 - text_score.get_width()/2,2))
 
     pygame.display.update()
@@ -389,7 +389,7 @@ def credits():
         correction=5
         menu_text=small_font.render("Main menu",1,(255,0,0))
         menu_button = pygame.Rect(screen_width/2 - menu_text.get_width()/2,screen_height - menu_text.get_height() - correction,menu_text.get_width(),menu_text.get_height())
-        #pygame.draw.rect(win, (255,0,0), menu_button)
+        # pygame.draw.rect(win, (255,0,0), menu_button)
         win.blit(menu_text,(screen_width/2 - menu_text.get_width()/2,screen_height-menu_text.get_height()-correction))
 
         fg=(50+1.75*t1)
@@ -419,7 +419,7 @@ def credits():
         text8=credits_font.render("Programming Director: Fabien ALLEMAND", 1, (255,0,0))
         win.blit(text8,(screen_width/2 - text8.get_width()/2, fg+6*gap))
 
-        text9=credits_font.render("Tester: Eva MESSEGUER, Clara Vadez,", 1, (255,0,0))
+        text9=credits_font.render("Tester: Eva MESSEGUER, Clara VADEZ,", 1, (255,0,0))
         win.blit(text9,(screen_width/2 - text9.get_width()/2, fg+7*gap))
 
         text9_bis=credits_font.render("Quentin WENGER, Fabien ALLEMAND", 1, (255,0,0))
@@ -455,58 +455,58 @@ def credits():
         pygame.display.update()
     pygame.quit()
 
-def bonus():
+# def bonus():
 
-    y=80
-    timer=10
+#     y=80
+#     timer=10
 
-    bg_bonus=list_bg_bonus[random.randint(0,len(list_bg_bonus)-1)]
-    text1=bonus_font.render("JOYEUX ANNIVERSAIRE", 1, (255,0,0))
-    text2=bonus_font.render("CHRISTOPHE !!!", 1, (255,0,0))
+#     bg_bonus=list_bg_bonus[random.randint(0,len(list_bg_bonus)-1)]
+#     text1=bonus_font.render("JOYEUX ANNIVERSAIRE", 1, (255,0,0))
+#     text2=bonus_font.render("CHRISTOPHE !!!", 1, (255,0,0))
 
-    run=True
-    while run:
+#     run=True
+#     while run:
 
-        mx,my=pygame.mouse.get_pos()
-        click=False
-        keys = pygame.key.get_pressed()
+#         mx,my=pygame.mouse.get_pos()
+#         click=False
+#         keys = pygame.key.get_pressed()
 
-        timer-=1
+#         timer-=1
 
-        if timer>0:
-            win.blit(bg_bonus, (0,0))
-            win.blit(text1,(screen_width/2 - text1.get_width()/2, y))
-            win.blit(text2,(screen_width/2 - text2.get_width()/2, y+38))
-            pygame.time.delay(200)
-        else:
-            timer=10
-            y=random.randint(0,screen_height-120)
-            bg_bonus=list_bg_bonus[random.randint(0,len(list_bg_bonus)-1)]
-            win.blit(bg_bonus, (0,0))
-            win.blit(text1,(screen_width/2 - text1.get_width()/2, y))
-            win.blit(text2,(screen_width/2 - text2.get_width()/2, y+40))
-            pygame.time.delay(200)
+#         if timer>0:
+#             win.blit(bg_bonus, (0,0))
+#             win.blit(text1,(screen_width/2 - text1.get_width()/2, y))
+#             win.blit(text2,(screen_width/2 - text2.get_width()/2, y+38))
+#             pygame.time.delay(200)
+#         else:
+#             timer=10
+#             y=random.randint(0,screen_height-120)
+#             bg_bonus=list_bg_bonus[random.randint(0,len(list_bg_bonus)-1)]
+#             win.blit(bg_bonus, (0,0))
+#             win.blit(text1,(screen_width/2 - text1.get_width()/2, y))
+#             win.blit(text2,(screen_width/2 - text2.get_width()/2, y+40))
+#             pygame.time.delay(200)
 
-        correction=5
-        menu_text=small_font.render("Main menu",1,(255,0,0))
-        menu_button= pygame.Rect(screen_width/2 - menu_text.get_width()/2,screen_height - menu_text.get_height() - correction,menu_text.get_width(),menu_text.get_height())
-        #pygame.draw.rect(win, (255,0,0), menu_button)
-        win.blit(menu_text,(screen_width/2 - menu_text.get_width()/2,screen_height-menu_text.get_height()-correction))
+#         correction=5
+#         menu_text=small_font.render("Main menu",1,(255,0,0))
+#         menu_button= pygame.Rect(screen_width/2 - menu_text.get_width()/2,screen_height - menu_text.get_height() - correction,menu_text.get_width(),menu_text.get_height())
+#         pygame.draw.rect(win, (255,0,0), menu_button)
+#         win.blit(menu_text,(screen_width/2 - menu_text.get_width()/2,screen_height-menu_text.get_height()-correction))
 
-        for event in pygame.event.get():
-            if event.type==pygame.QUIT:
-                run=False
-            if keys[pygame.K_ESCAPE]:
-                run=False
-            if event.type==pygame.MOUSEBUTTONDOWN:
-                if event.button==1:
-                    click=True
-            if menu_button.collidepoint((mx,my)):
-                if click:
-                    mainMenu()
+#         for event in pygame.event.get():
+#             if event.type==pygame.QUIT:
+#                 run=False
+#             if keys[pygame.K_ESCAPE]:
+#                 run=False
+#             if event.type==pygame.MOUSEBUTTONDOWN:
+#                 if event.button==1:
+#                     click=True
+#             if menu_button.collidepoint((mx,my)):
+#                 if click:
+#                     mainMenu()
 
-        pygame.display.update()
-    pygame.quit()
+#         pygame.display.update()
+#     pygame.quit()
 
 def mainMenu():
 
@@ -541,7 +541,7 @@ def mainMenu():
         correction=5
         credits_text=small_font.render("Credits",1,(255,0,0))
         credits_button= pygame.Rect(screen_width/2 - credits_text.get_width()/2,screen_height - credits_text.get_height() - correction,credits_text.get_width(),credits_text.get_height())
-        #pygame.draw.rect(win, (255,0,0), credits_button)
+        # pygame.draw.rect(win, (255,0,0), credits_button)
         win.blit(credits_text,(screen_width/2 - credits_text.get_width()/2,screen_height - credits_text.get_height() - correction))
 
         bonus_text=small_font.render("Bonus",1,(255,0,0))
